@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Gracias por tu compra! — Mundo Squishy Pack</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" /></noscript>
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root {
+      --pink:#FF6B9D; --pink-light:#FFD6E7; --pink-dark:#E0457A;
+      --purple:#9B59B6; --purple-light:#EDE1F5;
+      --green:#27AE60; --green-dark:#1E8449; --green-light:#D5F5E3;
+      --yellow:#F9CA24; --cream:#FFF9F0; --white:#FFFFFF;
+      --gray:#6C757D; --dark:#2C3E50;
+    }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Nunito',sans-serif; background:var(--cream); color:var(--dark); line-height:1.6; overflow-x:hidden; }
+    a { text-decoration:none; color:inherit; }
+    .container { max-width:640px; margin:0 auto; padding:0 20px; }
+    .fade-in { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+    .fade-in.visible { opacity:1; transform:translateY(0); }
+
+    /* ===== HERO ===== */
+    #hero-ty {
+      background:linear-gradient(160deg,#e8f5e9 0%,#f3e8ff 100%);
+      padding:52px 0 44px;
+      text-align:center;
+      border-bottom:4px dashed var(--green-light);
+    }
+    .ty-confetti { font-size:3.5rem; margin-bottom:12px; display:block; animation:bounce-in .8s ease; }
+    @keyframes bounce-in {
+      0%   { transform:scale(0) rotate(-15deg); opacity:0; }
+      70%  { transform:scale(1.15) rotate(5deg); }
+      100% { transform:scale(1) rotate(0deg); opacity:1; }
+    }
+    .ty-badge { display:inline-block; background:var(--green); color:#fff; font-weight:900; font-size:.82rem; text-transform:uppercase; letter-spacing:1.5px; padding:7px 20px; border-radius:50px; margin-bottom:16px; }
+    #hero-ty h1 { font-size:clamp(1.6rem,5vw,2.2rem); font-weight:900; line-height:1.2; margin-bottom:12px; color:var(--dark); }
+    #hero-ty h1 .name { color:var(--green-dark); }
+    #hero-ty .ty-sub { font-size:1rem; color:#555; font-weight:600; max-width:480px; margin:0 auto 24px; }
+
+    /* Confirmation card */
+    .confirm-card {
+      background:var(--white);
+      border:2px solid var(--green);
+      border-radius:20px;
+      padding:24px 20px;
+      text-align:left;
+      box-shadow:0 4px 20px rgba(39,174,96,.12);
+    }
+    .confirm-card .cc-title { font-weight:900; font-size:1rem; color:var(--green-dark); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+    .confirm-steps { list-style:none; display:flex; flex-direction:column; gap:12px; }
+    .confirm-steps li {
+      display:flex; align-items:flex-start; gap:12px;
+      font-weight:600; font-size:.93rem; color:var(--dark);
+    }
+    .step-num { background:var(--green); color:#fff; font-weight:900; font-size:.8rem; min-width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+
+    /* ===== WHAT YOU BOUGHT ===== */
+    #your-pack { background:var(--white); padding:48px 0; }
+    .section-title { font-size:1.6rem; font-weight:900; text-align:center; line-height:1.25; margin-bottom:8px; }
+    .section-sub   { text-align:center; color:var(--gray); font-size:.97rem; margin-bottom:28px; }
+
+    .pack-summary { display:flex; flex-direction:column; gap:12px; }
+    .pack-item {
+      display:flex; align-items:center; gap:14px;
+      background:var(--cream); border-radius:14px; padding:14px 16px;
+      border-left:4px solid var(--purple);
+    }
+    .pack-item .pi { font-size:1.8rem; flex-shrink:0; }
+    .pack-item .pt strong { display:block; font-weight:900; font-size:.95rem; }
+    .pack-item .pt span   { font-size:.83rem; color:var(--gray); }
+    .pack-item .check { margin-left:auto; font-size:1.3rem; flex-shrink:0; }
+
+    /* ===== NEXT STEPS ===== */
+    #next-steps { background:linear-gradient(160deg,var(--purple-light) 0%,var(--cream) 100%); padding:48px 0; }
+    .steps-grid { display:flex; flex-direction:column; gap:16px; }
+    .step-card {
+      background:var(--white); border-radius:18px; padding:20px 18px;
+      display:flex; align-items:flex-start; gap:16px;
+      box-shadow:0 2px 14px rgba(0,0,0,.06);
+    }
+    .step-card .sc-num {
+      background:linear-gradient(135deg,var(--pink-dark),var(--purple));
+      color:#fff; font-weight:900; font-size:1rem;
+      min-width:40px; height:40px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .step-card .sc-content strong { display:block; font-weight:900; font-size:.97rem; margin-bottom:4px; }
+    .step-card .sc-content span  { font-size:.87rem; color:var(--gray); line-height:1.5; }
+    .step-card .sc-content a { color:var(--purple); font-weight:800; text-decoration:underline; }
+
+    /* ===== TIPS ===== */
+    #tips { background:var(--white); padding:48px 0; }
+    .tips-box { background:linear-gradient(135deg,#fff8e1,var(--pink-light)); border-radius:20px; padding:24px 20px; }
+    .tips-box h3 { font-weight:900; font-size:1.05rem; margin-bottom:14px; }
+    .tips-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+    .tips-list li { display:flex; align-items:flex-start; gap:10px; font-size:.92rem; font-weight:600; }
+    .tips-list li .te { font-size:1.2rem; flex-shrink:0; }
+
+    /* ===== SHARE ===== */
+    #share { background:linear-gradient(160deg,#fff0f6 0%,var(--cream) 100%); padding:48px 0; }
+    .share-box { text-align:center; }
+    .share-box h2 { font-size:1.45rem; font-weight:900; margin-bottom:8px; }
+    .share-box p  { font-size:.93rem; color:var(--gray); margin-bottom:24px; }
+    .share-btns { display:flex; flex-direction:column; gap:12px; max-width:360px; margin:0 auto; }
+    .btn-share {
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      padding:15px 20px; border-radius:50px; font-family:'Nunito',sans-serif;
+      font-weight:900; font-size:.95rem; border:none; cursor:pointer;
+      transition:transform .15s, box-shadow .15s;
+    }
+    .btn-share:hover { transform:translateY(-2px); }
+    .btn-wa { background:#25D366; color:#fff; box-shadow:0 4px 14px rgba(37,211,102,.35); }
+    .btn-ig { background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366); color:#fff; box-shadow:0 4px 14px rgba(220,39,67,.3); }
+    .btn-share .bs-icon { font-size:1.3rem; }
+
+    /* Community box */
+    .community-box {
+      margin-top:24px;
+      background:var(--white);
+      border:2px dashed var(--purple);
+      border-radius:18px;
+      padding:22px 20px;
+      text-align:center;
+    }
+    .community-box .cb-icon { font-size:2.5rem; margin-bottom:8px; }
+    .community-box h3 { font-weight:900; font-size:1rem; margin-bottom:6px; }
+    .community-box p  { font-size:.87rem; color:var(--gray); margin-bottom:14px; }
+    .btn-community {
+      display:inline-block;
+      background:var(--purple);
+      color:#fff; font-weight:900; font-size:.9rem;
+      padding:12px 28px; border-radius:50px;
+      box-shadow:0 4px 14px rgba(155,89,182,.35);
+      transition:transform .15s;
+    }
+    .btn-community:hover { transform:translateY(-2px); }
+
+    /* ===== SUPPORT ===== */
+    #support { background:var(--white); padding:40px 0; }
+    .support-box {
+      background:var(--cream); border-radius:18px; padding:22px 20px;
+      display:flex; align-items:flex-start; gap:16px;
+      border:1.5px solid var(--pink-light);
+    }
+    .support-box .sb-icon { font-size:2.2rem; flex-shrink:0; }
+    .support-box h3 { font-weight:900; font-size:.97rem; margin-bottom:5px; }
+    .support-box p  { font-size:.87rem; color:var(--gray); }
+    .support-box a  { color:var(--pink-dark); font-weight:800; text-decoration:underline; }
+
+    /* ===== FOOTER ===== */
+    footer { background:#1a1a2e; color:#666; text-align:center; padding:24px 20px; font-size:.75rem; line-height:1.8; }
+    footer a { color:#888; text-decoration:underline; }
+  </style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section id="hero-ty">
+  <div class="container">
+    <span class="ty-confetti fade-in">🎉</span>
+    <div class="ty-badge fade-in">✅ Compra Exitosa</div>
+    <h1 class="fade-in">
+      ¡Gracias por confiar<br>en <span class="name">Mundo Squishy Pack</span>!
+    </h1>
+    <p class="ty-sub fade-in">
+      Tu compra fue confirmada. En los próximos minutos vas a recibir un email de <strong>Hotmart</strong> con el acceso a todo tu contenido.
+    </p>
+
+    <div class="confirm-card fade-in">
+      <div class="cc-title">📬 ¿Qué pasa ahora?</div>
+      <ul class="confirm-steps">
+        <li>
+          <div class="step-num">1</div>
+          <span>Revisá tu bandeja de entrada — el email de Hotmart llega en <strong>pocos minutos</strong> con el enlace de acceso.</span>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <span>Si no lo ves, revisá la carpeta de <strong>Spam o Promociones</strong> — a veces el correo aparece ahí.</span>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <span>Hacé clic en el enlace del email, descargá tus PDFs y ¡a crear! 🎨</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== LO QUE COMPRASTE ===== -->
+<section id="your-pack">
+  <div class="container">
+    <h2 class="section-title fade-in">🎁 Tu Pack Completo</h2>
+    <p class="section-sub fade-in">Todo lo que está en camino a tu casilla de email</p>
+
+    <div class="pack-summary">
+      <div class="pack-item fade-in">
+        <div class="pi">⭐</div>
+        <div class="pt">
+          <strong>Mundo Squishy Pack — +500 Moldes Exclusivos</strong>
+          <span>Animales Kawaii · Comiditas · Personajes · Formas Divertidas + Guía paso a paso</span>
+        </div>
+        <div class="check">✅</div>
+      </div>
+      <div class="pack-item fade-in">
+        <div class="pi">📅</div>
+        <div class="pt">
+          <strong>Desafío Creativo de 30 Días</strong>
+          <span>Una actividad nueva cada día para todo el mes</span>
+        </div>
+        <div class="check">✅</div>
+      </div>
+      <div class="pack-item fade-in">
+        <div class="pi">🧩</div>
+        <div class="pt">
+          <strong>60 Juegos Imprimibles</strong>
+          <span>Laberintos, sopas de letras, colorear y rompecabezas</span>
+        </div>
+        <div class="check">✅</div>
+      </div>
+      <div class="pack-item fade-in">
+        <div class="pi">👗</div>
+        <div class="pt">
+          <strong>Armario de Muñecas de Papel</strong>
+          <span>Moldes de ropa, accesorios y personajes para recortar</span>
+        </div>
+        <div class="check">✅</div>
+      </div>
+      <div class="pack-item fade-in">
+        <div class="pi">🎬</div>
+        <div class="pt">
+          <strong>Tutoriales en Video Paso a Paso</strong>
+          <span>Técnicas de acabado perfecto en video</span>
+        </div>
+        <div class="check">✅</div>
+      </div>
+    </div>
+
+    <!-- Nota: se adquiriram upsells, apareceriam aqui também -->
+    <div style="margin-top:16px;background:var(--purple-light);border-radius:14px;padding:14px 16px;font-size:.87rem;color:var(--purple);font-weight:700;" class="fade-in">
+      🏆 Si agregaste el <strong>Club del Squishy</strong> o <strong>Vacaciones Sin Pantallas</strong>, ese contenido llega en el mismo email — todo junto.
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== PRÓXIMOS PASOS ===== -->
+<section id="next-steps">
+  <div class="container">
+    <h2 class="section-title fade-in">🚀 ¿Por dónde empezar?</h2>
+    <p class="section-sub fade-in">Tu guía rápida para los primeros 15 minutos</p>
+
+    <div class="steps-grid">
+      <div class="step-card fade-in">
+        <div class="sc-num">1</div>
+        <div class="sc-content">
+          <strong>Descargá los PDFs en tu dispositivo</strong>
+          <span>Guardá los archivos en el celular o computadora. También podés enviarlos a imprimir directamente desde el email.</span>
+        </div>
+      </div>
+      <div class="step-card fade-in">
+        <div class="sc-num">2</div>
+        <div class="sc-content">
+          <strong>Imprimí los primeros 3 moldes</strong>
+          <span>Elegí los diseños favoritos de tus hijos — te recomendamos empezar con los animales kawaii: son los más fáciles y los que más enganchan.</span>
+        </div>
+      </div>
+      <div class="step-card fade-in">
+        <div class="sc-num">3</div>
+        <div class="sc-content">
+          <strong>Preparate con tijeras, cinta y algodón</strong>
+          <span>Es todo lo que necesitás. Sin idas al kiosco, sin esperar delivery — ¡arrancás hoy mismo!</span>
+        </div>
+      </div>
+      <div class="step-card fade-in">
+        <div class="sc-num">4</div>
+        <div class="sc-content">
+          <strong>Invitá a tus hijos y ¡a crear!</strong>
+          <span>Mostrales el primer molde, dejá que elijan los colores y observá cómo la creatividad fluye sola. En <strong>15 minutos</strong> ya tienen su primer squishy en las manos. 🎨</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== TIPS PRO ===== -->
+<section id="tips">
+  <div class="container">
+    <div class="tips-box fade-in">
+      <h3>💡 Tips para sacarle el máximo al Pack:</h3>
+      <ul class="tips-list">
+        <li><span class="te">🖨️</span><span>Imprimí en papel un poco más grueso (75-90g) — el squishy queda más firme y duradero.</span></li>
+        <li><span class="te">✂️</span><span>Usá tijeras de punta redondeada para los más chiquitos — son más seguras y igual cortan perfecto.</span></li>
+        <li><span class="te">🧸</span><span>Con menos algodón el squishy queda más suave; con más, más firme. ¡Experimenten!</span></li>
+        <li><span class="te">🎨</span><span>Imprimí en blanco y negro y dejá que los chicos los coloreen antes de armar — doble actividad.</span></li>
+        <li><span class="te">📸</span><span>Sacá fotos de los squishies terminados y compartí en las redes — ¡la comunidad ama ver los resultados!</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== COMPARTIR ===== -->
+<section id="share">
+  <div class="container">
+    <div class="share-box">
+      <h2 class="fade-in">💬 ¿Le contás a otra mamá?</h2>
+      <p class="fade-in">Si creés que otra mamá puede beneficiarse con esto, compartilo — es gratis y puede cambiarle el día a otra familia. 🤍</p>
+
+      <div class="share-btns">
+        <a href="https://wa.me/?text=¡Encontré%20algo%20increíble%20para%20mantener%20a%20los%20chicos%20alejados%20del%20celular!%20Mundo%20Squishy%20Pack%20👉%20https://filipe-machado0.github.io/squishy_latam/"
+           target="_blank" class="btn-share btn-wa fade-in">
+          <span class="bs-icon">💬</span>
+          Compartir en WhatsApp
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" class="btn-share btn-ig fade-in">
+          <span class="bs-icon">📸</span>
+          Compartir en Instagram
+        </a>
+      </div>
+
+      <div class="community-box fade-in">
+        <div class="cb-icon">👩‍👧‍👦</div>
+        <h3>¡Unite a la comunidad!</h3>
+        <p>Más de 12.000 mamás comparten sus creaciones, trucos y fotos de los squishies en nuestro grupo privado. ¡Es gratis y está lleno de inspiración!</p>
+        <a href="#" class="btn-community">💜 Unirme al Grupo Privado</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== SOPORTE ===== -->
+<section id="support">
+  <div class="container">
+    <div class="support-box fade-in">
+      <div class="sb-icon">🤝</div>
+      <div>
+        <h3>¿Algún problema con tu compra?</h3>
+        <p>
+          Si no recibiste el email en 30 minutos, revisá la carpeta de spam. Si el problema persiste, contactá al soporte de <a href="https://hotmart.com/es/support" target="_blank">Hotmart directamente aquí</a> — ellos resuelven todo de forma rápida.<br><br>
+          Para consultas sobre el contenido, escribinos a <a href="mailto:soporte@mundosquishy.com">soporte@mundosquishy.com</a> 💌
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>© 2026 Mundo Squishy Pack. Todos los derechos reservados.</p>
+  <p><a href="#">Política de Privacidad</a> &nbsp;|&nbsp; <a href="#">Términos y Condiciones</a> &nbsp;|&nbsp; <a href="mailto:soporte@mundosquishy.com">Soporte</a></p>
+  <p style="margin-top:8px;color:#444;">La entrega del producto es gestionada por Hotmart. Al adquirir, aceptás sus Términos de Servicio.</p>
+</footer>
+
+
+<script>
+  // FADE IN
+  (function(){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+      });
+    },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.fade-in').forEach(function(el){obs.observe(el);});
+  })();
+
+  // Anima confetti no load
+  window.addEventListener('DOMContentLoaded',function(){
+    var c=document.querySelector('.ty-confetti');
+    if(c)c.classList.add('visible');
+  });
+</script>
+
+</body>
+</html>
